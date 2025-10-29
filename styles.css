@@ -950,3 +950,25 @@ footer p {
   background: #ffb700;
 }
 
+
+
+
+/* --- FIX para que el encabezado "FLONVERSE TOYS" no quede oculto en celular --- */
+header, .navbar, .search-bar {
+  z-index: 1000; /* se mantiene visible pero detrás del carrito */
+}
+
+#cart-sidebar {
+  z-index: 9999; /* carrito encima de todo */
+}
+
+.main-content, section, .hero, .titulo-principal {
+  margin-top: 90px !important; /* empuja hacia abajo el texto */
+}
+
+/* Asegura que no quede cubierto por la barra de búsqueda */
+@media (max-width: 768px) {
+  .main-content, section, .hero, .titulo-principal {
+    margin-top: 120px !important;
+  }
+}
