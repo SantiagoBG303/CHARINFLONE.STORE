@@ -1,0 +1,1522 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>CHARINFLON STORE</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="chatbot.css">
+</head>
+
+<!-- Botón para abrir/cerrar -->
+<button id="chat-toggle" style="position:fixed;bottom:20px;right:20px;
+background:#28a745;color:white;border:none;border-radius:50%;
+width:60px;height:60px;font-size:26px;cursor:pointer;z-index:9999;">💬</button>
+
+<!-- Ventana del chat -->
+<div id="chat-container" style="display:none;position:fixed;bottom:90px;right:20px;
+width:320px;height:420px;background:white;border-radius:10px;
+box-shadow:0 0 15px rgba(0,0,0,0.2);overflow:hidden;z-index:9999;
+display:flex;flex-direction:column;font-family:Arial, sans-serif;">
+
+  <div id="chat-header" style="background:#28a745;color:white;padding:10px;
+display:flex;justify-content:space-between;align-items:center;">
+    <span>🤖 CharInflonBot</span>
+    <button id="chat-close" style="background:none;border:none;color:white;
+font-size:20px;cursor:pointer;">×</button>
+  </div>
+
+  <div id="chat-body" style="flex:1;padding:10px;overflow-y:auto;font-size:14px;"></div>
+
+  <div id="chat-footer" style="display:flex;border-top:1px solid #ccc;">
+    <input id="chat-input" type="text" placeholder="Escribe aquí..." 
+    style="flex:1;padding:10px;border:none;outline:none;">
+    <button id="chat-send" style="background:#28a745;color:white;border:none;
+padding:0 15px;cursor:pointer;">➤</button>
+  </div>
+</div>
+
+<script src="chatbox.js"></script>
+
+
+<body>
+  <!-- Overlay para el carrito -->
+  <div class="overlay" id="overlay"></div>
+
+  <!-- Carrito de compras -->
+  <div class="cart-sidebar" id="cart-sidebar">
+    <div class="cart-header">
+      <h2>Tu Carrito</h2>
+      <button class="close-cart" id="close-cart"><i class="fas fa-times"></i></button>
+    </div>
+    <div class="cart-items" id="cart-items"></div>
+    <div class="cart-total" id="cart-total">Total: $0.00</div>
+    <button class="checkout-btn" id="checkout-btn">Finalizar Compra</button>
+  </div>
+
+  <!-- Barra de navegación -->
+  <header>
+    <div class="header-container">
+      <div class="logo">
+        <i class="fas fa-capsules"></i> CHARINFLON STORE
+      </div>
+
+      <nav>
+        <ul>
+          <li><a href="#JUGUETERIA" class="active">JUEGUETERIA</a></li>
+          <li><a href="#TECNOLOGIA">TECNOLOGIA</a></li>
+          <li><a href="#CONTACTO">CONTACTO</a></li>
+        </ul>
+      </nav>
+
+      <div class="header-right">
+        <div class="search-container">
+          <input type="text" id="busqueda" placeholder="Buscar producto...">
+          <button onclick="buscar()"><i class="fas fa-search"></i></button>
+        </div>
+        <div class="cart-icon">
+          <button id="open-cart">
+            <i class="fas fa-shopping-cart"></i>
+            <span class="cart-count" id="cart-count">0</span>
+          </button>
+        </div>
+      </div>
+    </div>
+  </header>
+
+  <!-- ================== SECCIÓN JUEGUETERIA ================== -->
+  <section id="JUGUETERIA">
+    <div class="section-header">
+      <h1>FLONVERSE TOYS</h1>
+      <p>JUEGUETERIA </p>
+    </div>
+
+    <div class="products-grid">
+
+      <!-- Producto 1 -->
+      <div class="product-card" data-id="1" data-name="CARRO A CONTROL 4X4">
+        <div class="product-image">
+          <img src="carro.png" alt="CARRO A CONTROL 4X4">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">CARRO A CONTROL 4X4</h3>
+          <p class="product-effect">COLORES AZUL - ROSADO - NEGRO - NARANJA</p>
+          <p class="product-description">
+            Bestia de Alta Velocidad Todo Terreno - Control Remoto Inalámbrico de 2.4GHz, Doble Batería Recargable de Litio de 500mAh, Carga USB, Alimentado por Batería, Edades 14+, Perfecto para Buscadores de Emoción.
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">90.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 2 -->
+      <div class="product-card" data-id="2" data-name="CAMION MONSTRUO">
+        <div class="product-image">
+          <img src="mosntruo.png" alt="CAMION MONSTRUO A CONTROL">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">CAMION MONSTRUO A CONTROL</h3>
+          <p class="product-effect">SUPER RESISTENTE DE LARGA DURACION</p>
+          <p class="product-description">
+            Camión Monstruo a Control Remoto 2.4Ghz de Aleación con Seis Ruedas, Batería Recargable 1200mAh, A Prueba de Choques, Luces LED, Regalo Ideal para Niños.
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">250.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 3 -->
+      <div class="product-card" data-id="3" data-name="CYBERTRUCK">
+        <div class="product-image">
+          <img src="ciber.png" alt="CYBERTRUCK">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">CARRO A CONTROL REMOTO CYBERTRUCK</h3>
+          <p class="product-effect">CON CAMARA Y CONTROL DESDE CELULAR</p>
+          <p class="product-description">
+            Coche RC TF29 con Cámara, FPV en Tiempo Real, APP Control, Luces Regulables, Video en Vivo, Truck Todoterreno Robusto con Carrocería Antigolpes.
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">100.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 4 -->
+      <div class="product-card" data-id="4" data-name="DRONE K500 MAX">
+        <div class="product-image">
+          <img src="DRO.png" alt="DRONE K500 MAX">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">DRONE K500 MAX</h3>
+          <p class="product-effect">K500MAX con Cuerpo EPP Antichoque</p>
+          <p class="product-description">
+            Mantenimiento de Altitud Barométrico, Aterrizaje Automático, Volteos 3D, Modo Headless, Sistema Anticolisión, Luces LED.
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">65.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 5 -->
+      <div class="product-card" data-id="5" data-name="DRONE PROFESIONAL M66">
+        <div class="product-image">
+          <img src="FINE.png" alt="DRONE PROFESIONAL">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">DRONE PROFESIONAL M66</h3>
+          <p class="product-effect">DRON DE ALTA TECNOLOGÍA</p>
+          <p class="product-description">
+            Dron profesional 2025 con cámara HD, control por aplicación, hover automático, 30 min de vuelo, evitación de obstáculos y rotación 360°.
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">250.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 6 -->
+      <div class="product-card" data-id="6" data-name="DRONE E99">
+        <div class="product-image">
+          <img src="E99.png" alt="DRONE E99">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">DRONE E99 PRO</h3>
+          <p class="product-effect">PLEGABLE CON DOBLE CÁMARA</p>
+          <p class="product-description">
+            Dron RC con doble cámara, cuadricóptero plegable, vuelo estable, nivel básico, ideal para principiantes, fotografía aérea y exteriores.
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">85.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 7 -->
+      <div class="product-card" data-id="7" data-name="CASA DE MUÑECAS">
+        <div class="product-image">
+          <img src="CAS.png" alt="CASA DE MUÑECAS">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">CASA DE MUÑECAS</h3>
+          <p class="product-effect">LUJOSA DE 4 PISOS</p>
+          <p class="product-description">
+            Incluye 2 muñecas y accesorios equipados, disponible en rosa o azul, perfecta para regalo.
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">130.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 8 -->
+      <div class="product-card" data-id="8" data-name="PERRO INTELIGENTE">
+        <div class="product-image">
+          <img src="DOG.png" alt="PERRO INTELIGENTE">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">PERRO INTELIGENTE</h3>
+          <p class="product-effect">ROBOT INTERACTIVO</p>
+          <p class="product-description">
+            Perro Robot Inteligente con comando de voz, control remoto infrarrojo, acrobacias y programación — ideal para niños.
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">150.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+   
+      <div class="product-card" data-id="1" data-name="PIANO ELECTRONICO">
+        <div class="product-image">
+          <img src="PIANO.png" alt="PIANO ELECTRONICO">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title"> PIANO ELECTRONICO</h3>
+          <p class="product-effect">TECLADO ELECTRONICO</p>
+          <p class="product-description">
+           Teclado Electrónico para Niños, Instrumento Musical Educativo Multifunción de 37 Teclas, Piano para Principiantes para Niños y Niñas, Conjunto de Música para Dedos, Ideal para Navidad, Halloween, Regalo de Cumpleaños, Alimentado por Batería/USB, Material ABS, Opciones de Color Rosa/Azul/Rojo
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">100.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 2 -->
+      <div class="product-card" data-id="2" data-name="carro Mcqueen">
+        <div class="product-image">
+          <img src="macqeen.png" alt="carro macqueen">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">  Mcqueen carro Coche control remoto</h3>
+          <p class="product-effect">carro de jueguete disney rayo macqueen</p>
+          <p class="product-description">
+            Mcquenn carro Coche de Juguete para Niños, Coche con Control Remoto de Cuatro Direcciones, Juego al Aire Libre para Niños y Niñas, Regalo Perfecto para Vacaciones y Cumpleaños para Compañeros, Familia y Amigos
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">75.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 3 -->
+      <div class="product-card" data-id="3" data-name="camion macqueen">
+        <div class="product-image">
+          <img src="grande.png" alt="CAMION Mcqueen">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">CARRO A CONTROL REMOTO  RAYO MCQUEEN CAMION</h3>
+          <p class="product-effect">RAYO MCQUEENCAMION</p>
+          <p class="product-description">
+           Mcqueen rayo  Coche camión grande de Juguete para Niños, Coche RC Todo Terreno para Niños y Niñas, Juego al Aire Libre, Regalo Perfecto para Vacaciones y Cumpleaños para Compañeros, Familia y Amigos
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">90.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 4 -->
+      <div class="product-card" data-id="4" data-name="CARRO 4X4 NEW">
+        <div class="product-image">
+          <img src="CARRO4.png" alt="CARRO 4X4 NEW">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">CARRO 4X4 NEW RC CONTROL REMOTO</h3>
+          <p class="product-effect">CARRO 4X4 NEW RC</p>
+          <p class="product-description">
+           Coche de control remoto todoterreno de alta velocidad a escala 1:16, con un control remoto de 2.4Ghz, alimentado por una batería de litio recargable de 500Mah, capacidad de carga USB, que alcanza velocidades de 20KM/H, equipado con características anticolisión.
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">85.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 5 -->
+      <div class="product-card" data-id="5" data-name="JUEGO DE MESA FUTBOL">
+        <div class="product-image">
+          <img src="FUT.png" alt="JUEGO DE MESA FUTBOL">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">JUEGO DE MESA FUTBOL</h3>
+          <p class="product-effect">Juego de Fútbol de Mesa para Reuniones Familiares</p>
+          <p class="product-description">
+           Juego de Fútbol de Mesa para Reuniones Familiares - Juego de Mesa Interactivo Competitivo para Dos Jugadores, Diseño Portátil y Duradero, Juguete Deportivo Educativo, Regalo de Navidad y Acción de Gracias, Fútbol de Mesa, Juego/Juguete Para Niño
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">55.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 6 -->
+    <div class="product-card" data-id="6" data-name="MACHINE BOXEO">
+      <div class="product-image">
+        <img src="boxeo.png" alt="MACHINE BOXEO">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">MAQUINA DE BOXEO PARED MUSICAL</h3>
+        <p class="product-effect">MAQUINA DE BOXEO PARA NIÑOS O ADULTOS CON SONIDO Y CONTEO DE GOLPES</p>
+        <p class="product-description">
+          Máquina de boxeo musical de pared con puntuación inteligente, luces LED y guantes - Juguete deportivo interactivo para adultos, niños y niñas - Material ABS, juego atractivo para el gimnasio en casa.
+        </p>
+        <div class="product-info">
+          <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+        </div>
+        <div class="product-price">150.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 7 -->
+    <div class="product-card" data-id="7" data-name="BALONCESTO JUEGO">
+      <div class="product-image">
+        <img src="BALONCESTO.png" alt="JUEGO BALONCESTO">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">JUEGO BALONCESTO CANASTA</h3>
+        <p class="product-effect">JUEGO BALONCESTO ARMABLE GRANDE PARA NIÑOS</p>
+        <p class="product-description">
+          Juego de canasta de baloncesto armable para interior/exterior, incluye bomba y pelota. Fabricado con plástico resistente, ideal para regalos de Navidad o cumpleaños.
+        </p>
+        <div class="product-info">
+          <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+        </div>
+        <div class="product-price">95.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 8 -->
+    <div class="product-card" data-id="8" data-name="IMPRESORA">
+      <div class="product-image">
+        <img src="IMPRESORA.png" alt="IMPRESORA INTELIGENTE">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">IMPRESORA MINI INTELIGENTE</h3>
+        <p class="product-effect">IMPRESORA MINI PARA NIÑOS COLORES AZUL Y ROSA</p>
+        <p class="product-description">
+          Impresora Mini Portátil compatible con iOS y Android. Sin tinta, conexión inalámbrica, impresión rápida de etiquetas, fotos y notas. Ideal para estudiantes y oficina. Diseño compacto y ligero.
+        </p>
+        <div class="product-info">
+          <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+        </div>
+        <div class="product-price">65.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 9 -->
+    <div class="product-card" data-id="9" data-name="GAME OF THRONES">
+      <div class="product-image">
+        <img src="GAMEOF.png" alt="GAME OF THRONES">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">MONOPOLY GAME OF THRONES</h3>
+        <p class="product-effect">EDICIÓN DELUXE</p>
+        <p class="product-description">
+          Edición especial de Monopoly basada en Juego de Tronos. Incluye figuras coleccionables y tablero temático. Perfecto para fiestas y coleccionistas.
+        </p>
+        <div class="product-info">
+          <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+        </div>
+        <div class="product-price">165.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 10 -->
+    <div class="product-card" data-id="10" data-name="GUANTE SPIDERMAN">
+      <div class="product-image">
+        <img src="SPIDER.png" alt="GUANTE SPIDERMAN">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">GUANTE SPIDERMAN LANZA TELARAÑA</h3>
+        <p class="product-effect">DIVERTIDO JUGUETE INTERACTIVO</p>
+        <p class="product-description">
+          Guante lanzaredes de araña, diseño rojo y azul con disparadores de telaraña. Fabricado en ABS duradero. Ideal como regalo divertido para niños.
+        </p>
+        <div class="product-info">
+          <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+        </div>
+        <div class="product-price">40.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 11 -->
+    <div class="product-card" data-id="11" data-name="TABLERO DIGITAL">
+      <div class="product-image">
+        <img src="TABLERO.png" alt="TABLERO DIGITAL">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">TABLERO PARA DIBUJO DIGITAL</h3>
+        <p class="product-effect">TABLETA DE DIBUJO LCD</p>
+        <p class="product-description">
+          Tableta de dibujo LCD de 8.5 pulgadas, duradera, con fácil borrado. Ideal para niños, oficina y regalos creativos.
+        </p>
+        <div class="product-info">
+          <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+        </div>
+        <div class="product-price">30.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 12 -->
+    <div class="product-card" data-id="12" data-name="HELICOPTERO RC">
+      <div class="product-image">
+        <img src="helicoptero.png" alt="HELICOPTERO A CONTROL REMOTO">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">HELICÓPTERO A CONTROL REMOTO</h3>
+        <p class="product-effect">LUZ LED Y CONTROL INFRARROJO</p>
+        <p class="product-description">
+          Helicóptero de juguete con control remoto infrarrojo, luces LED, batería recargable USB y cuerpo liviano. Perfecto para principiantes.
+        </p>
+        <div class="product-info">
+          <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+        </div>
+        <div class="product-price">40.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+
+      <!-- Producto 8 -->
+    <div class="product-card" data-id="8" data-name="GOKU FIGURE">
+      <div class="product-image">
+        <img src="GOKU.png" alt="GOKU FIGURE">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">Figura de Goku Super Saiyin de Dragon Ball Z</h3>
+        <p class="product-effect">FIGURE GOKU SAIYIN</p>
+        <p class="product-description">
+          Figura de Goku Super Saiyin de Dragon Ball Z - Pose de Acción Anime con Cabello Azul y Rosa Dinámico, Base de Exhibición Dinámica, Estatua Coleccionable para Decoración del Hogar/Oficina, Decoración del Hogar, Pose Dinámica, Escultura Detallada, Modelo de Personaje, figuras de colección, figuras pvc
+        </p>
+        <div class="product-info">
+          <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+        </div>
+        <div class="product-price">65.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 9 -->
+    <div class="product-card" data-id="9" data-name="ESFERAS DRAGON">
+      <div class="product-image">
+        <img src="BOLAS.png" alt="ESFERAS DRAGON">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">ESFERAS DEL DRAGON </h3>
+        <p class="product-effect">7 ESFERAS DEL DRAGON EN CRISTAL</p>
+        <p class="product-description">
+        Z, set de caja de regalo de , invocar dragón, figura de  Z, set de 7 bolas de cristal de  para fiestas, ideal para regalos, decoración de habitaciones, coleccionistas y fans de , el regalo perfecto de Navidad, incluye caja de regalo
+        </p>
+        <div class="product-info">
+          <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+        </div>
+        <div class="product-price">65.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 10 -->
+    <div class="product-card" data-id="10" data-name="PELUCHE STICH">
+      <div class="product-image">
+        <img src="PELUCHE.png" alt="PELUCHE STICH">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">PELUCHE STICH</h3>
+        <p class="product-effect"> peluche de Stitch abrazando a Donald</p>
+        <p class="product-description">
+          1 peluche de Stitch abrazando a Donald, figura de anime, decoración para cumpleaños, Día de San Valentín y Navidad, regalo para habitación, auto, escuela o dormitorio
+        </p>
+        <div class="product-info">
+          <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+        </div>
+        <div class="product-price">60.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 11 -->
+    <div class="product-card" data-id="11" data-name="MALETA STICH">
+      <div class="product-image">
+        <img src="MALETA.png" alt="MALETA STICH">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">MALETA STICH</h3>
+        <p class="product-effect">mochila de felpa de Stitch</p>
+        <p class="product-description">
+          1 mochila de felpa de Stitch: diseño suave de personaje de dibujos animados, ligera y bolsa de viaje, azul con orejas y accesorios rosas, perfecta para regalos de cumpleaños, almacenamiento en el hogar y organizador para escritorios y cajones, mochila de viaje
+        </p>
+        <div class="product-info">
+          <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+        </div>
+        <div class="product-price">35.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 12 -->
+    <div class="product-card" data-id="12" data-name="SET CARROS">
+      <div class="product-image">
+        <img src="SET.png" alt="SET CARROS">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title"> JUEGO DE COCHES DE JUGUETE</h3>
+        <p class="product-effect">COCHES SET DE VARIOS VEHICULOS PARA NIÑOS. COLORES VERDE,AZUL,ROJO,AMARILLO</p>
+        <p class="product-description">
+          Juego de Coches de Juguete: Patrullas, Camiones de Construcción y Bomberos - Colección de Modelos de Vehículos para Niños con Accesorios de Colores Aleatorios para Interacción Familiar, Diseño Vintage (No Usado)
+        </p>
+        <div class="product-info">
+          <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+        </div>
+        <div class="product-price">55.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+
+     <!-- Producto 10 -->
+    <div class="product-card" data-id="10" data-name="INFLABLE BOXEO">
+      <div class="product-image">
+        <img src="infla.png" alt="inflable boxeo">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">INFLABLE JUGUETE</h3>
+        <p class="product-effect"> SACO BOXEO INFLABLE</p>
+        <p class="product-description">
+         1pc Saco de Boxeo Inflable Juguete Vertical para Niños, Puzzle de Lucha y Ejercicio con Arena, Dinosaurio Especial para Habitación
+        </p>
+        <div class="product-info">
+          <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+        </div>
+        <div class="product-price">35.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 11 -->
+    <div class="product-card" data-id="11" data-name="VACA BAILARIN">
+      <div class="product-image">
+        <img src="GUN.png" alt="VACA BAILARIN">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">VACA BAILARIN</h3>
+        <p class="product-effect">JUGUETE VACA BAILARIN</p>
+        <p class="product-description">
+         Juguete Interactivo de Vaca Bailarina Musical con Luces - Robot Cantante a Pilas con Luces Coloridas, Ideal para Niños y Niñas, Regalo Perfecto para Navidad y Halloween, Color Marrón Café
+        </p>
+        <div class="product-info">
+          <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+        </div>
+        <div class="product-price">50.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 12 -->
+    <div class="product-card" data-id="12" data-name="INFLABLE NENE">
+      <div class="product-image">
+        <img src="INFLABLE.png" alt="INFLABLE NENE">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title"> ASIENTO INFLABLE </h3>
+        <p class="product-effect">Asiento inflable para jóvenes con bomba de aire incorporada, silla inflable portátil para 3-36 meses</p>
+        <p class="product-description">
+          Asiento inflable para jóvenes con bomba de aire incorporada, silla inflable portátil para 3-36 meses, asiento de apoyo para jóvenes de pie, adecuado para aprender a sentarse y caminar.
+        </p>
+        <div class="product-info">
+          <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+        </div>
+        <div class="product-price">40.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+
+    <!-- Producto 12 -->
+    <div class="product-card" data-id="12" data-name="CACTUS BAILARIN">
+      <div class="product-image">
+        <img src="HABLA.png" alt="CACTUS BAILARIN">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title"> CACTUS BAILARIN</h3>
+        <p class="product-effect">Cactus bailarín interactivo</p>
+        <p class="product-description">
+          Cactus bailarín interactivo, 1 unidad - Peluche de poliéster verde, habla, canta, brilla y repite lo que dices, ideal para decoración del hogar y regalos para San Valentín, Halloween, Navidad, Pascua y cumpleaños (pilas no incluidas), DANCING CACTUS
+        </p>
+        <div class="product-info">
+          <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+        </div>
+        <div class="product-price">50.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+
+     <!-- Producto 10 -->
+    <div class="product-card" data-id="10" data-name="BOX JUEGO MESA">
+      <div class="product-image">
+        <img src="FI.png" alt="BOX JUEGO MESA">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">JUEGO DE MESA BATALLA</h3>
+        <p class="product-effect"> JUEGO DE MESA</p>
+        <p class="product-description">
+         Batallas Interactivas para Padres, Combate para Dos Jugadores, Juguetes, Juegos de Mesa para Familias, Juguetes Educativos Interactivos para Aliviar el Estrés, Juegos de Lucha.
+        </p>
+        <div class="product-info">
+          <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+        </div>
+        <div class="product-price">30.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 11 -->
+    <div class="product-card" data-id="11" data-name="TRANSFROMER CARRO">
+      <div class="product-image">
+        <img src="TRANS.png" alt="TRANSFORMER CARRO">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">COCHE TRANSFORMABLE CONTROL REMOTO</h3>
+        <p class="product-effect">COCHE TRANSFORMABLE</p>
+        <p class="product-description">
+        Coche Transformable en Robot con Control Remoto 2-en-1 con Deriva de 360°, Luces Dinámicas, Batería Recargable por USB - Diseño de Coche Deportivo Negro y Azul
+        </p>
+        <div class="product-info">
+          <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+        </div>
+        <div class="product-price">70.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 12 -->
+    <div class="product-card" data-id="12" data-name="AJEDREZ POTTER">
+      <div class="product-image">
+        <img src="AJEDREZ.png" alt="AJEDREZ POTTER">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title"> AJEDREZ HARRY POTTER</h3>
+        <p class="product-effect">Juego de Ajedrez Harry Potter</p>
+        <p class="product-description">
+         Juego de Ajedrez Harry Potter con Escudos Icónicos de las Casas y Piezas - Tablero de PVC Duradero para Juegos de Mesa, Regalo Coleccionable Oficial para Fans
+        </p>
+        <div class="product-info">
+          <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+        </div>
+        <div class="product-price">150.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+
+  </div>
+</section>
+
+    
+
+      
+
+
+
+ <!-- ================== SECCIÓN POLVOS ================== -->
+<section id="TECNOLOGIA">
+  <div class="section-header">
+    <h1>ELECTROFLOW</h1>
+    <p>TECNOLOGIA </p>
+  </div>
+
+  <div class="products-grid">
+
+    <!-- Producto BioZemSure -->
+    <div class="product-card" data-id="1" data-name="PROYECTOR HY300" data-price="0">
+      <div class="product-image">
+        <img src="PROYE.png" alt="PROYECTOR HY300">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">PROYECTOR HY300</h3>
+        <p class="product-effect">Proyector mini HY300 Pro portátil</p>
+        
+        <p class="product-description">Proyector mini HY300 Pro, portátil, 180 grados, resolución nativa 720P, soporte/descodificación 4K, WiFi 6 5G de doble banda, inalámbrico 5.0, Android 11, pantalla de 130 pulgadas, compatible con teléfonos móviles, computadoras, portátiles, PS5 y palos, ideal para proyección en casa.</p>
+
+       
+
+        <p><strong>CONTRAENTREGA BOGOTÁ</strong></p>
+
+        <div class="product-price">190.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto Clorfit -->
+    <div class="product-card" data-id="2" data-name="HUMIDIFICADOR" data-price="0">
+      <div class="product-image">
+        <img src="HUM.png" alt="HUMIDIFICADOR">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">HUMIDIFICADOR PARED</h3>
+        <p class="product-effect">Humidificador de Aromaterapia Recargable</p>
+        <p class="product-description">Humidificador de Aromaterapia Recargable USB Multifunción, Luz Nocturna Cambiante de Color + Temporizador de 7 Niveles + Ultra Silencioso + Purificación de Aire, Batería de Larga Duración de 1800mAh, Compatible con Aceites Esenciales/Perfumes, para Dormitorio/Oficina <p>
+
+        
+
+       
+          <p><strong>CONTRAENTREGA BOGOTA</strong> 
+          
+
+        <div class="product-price">65.000</div> 
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto Glutatión -->
+    <div class="product-card" data-id="3" data-name="HUMIDIFICADOR PARED X" data-price="0">
+      <div class="product-image">
+        <img src="HUMIDI.png" alt="HUMIDIFICADOR PARED X">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">HUMIDIFICADOR PARED X</h3>
+        <p class="product-effect">HUMIDIFICADOR</p>
+        <p class="product-description">Diseminador de aceites esenciales y humidificador alimentado por USB con una salida de 300 ml/h, 7 niveles de ajuste de niebla, diseño de montaje en la pared, batería recargable, elegante beige - Compartimento de almacenamiento de fragancias para el hogar y la oficina, moderno decorativo, diseminador de aromas, aroma, oficina, decoración minimalista, construcción duradera, entusiastas de la bienestar, decoración elegante, niebla de alta calidad, buscadores de bienestar</p>
+
+        
+
+          <p><strong>CONTRAENTREGA BOGOTA</strong> 
+  
+
+        <div class="product-price">65.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto Sales de Magnesio -->
+    <div class="product-card" data-id="4" data-name="HUMI TITANIC" data-price="0">
+      <div class="product-image">
+        <img src="TITANIC.png" alt="HUMI TITANIC">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">HUMIDIFICADOR TITANIC</h3>
+        <p class="product-effect">Humidificador de Niebla Fría y Difusor de Aromas</p>
+        <p class="product-description">Humidificador de Niebla Fría y Difusor de Aromas con Tecnología de Ondas Sonoras en Forma de Barco, Control Remoto, Tanque de 250ml/10oz, Apagado Automático/Temporizador, Noche con Cambio de Colores, 2 en 1 para Dormitorio, Oficina - Compatible con Enchufe (Blanco/)</p>
+
+     
+          <p><strong>CONTRAENTREGA BOGOTA</strong> 
+          
+        
+
+        <div class="product-price">120.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto Colágeno Marino -->
+    <div class="product-card" data-id="5" data-name="TERMO INTELIGENTE" data-price="0">
+      <div class="product-image">
+        <img src="TERMO.png" alt="TERMO INTELIGENTE">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">TERMO INTELIGENTE</h3>
+        <p class="product-effect">Botella portátil inteligente , COLOR ROJO, VERDE , BLANCO,NEGRO, AZUL.</p>
+        <p class="product-description">Botella portátil inteligente de estilo chino con filtro para mostrar la temperatura - Acero inoxidable 304, funciona con batería, acabado mate, ideal para café y té, hidratación al aire libre | Diseño tradicional chino | Construcción duradera, taza de viaje para café</p>
+
+        
+
+          <p><strong>CONTRAENTREGA BOGOTA</strong>  
+         
+        <div class="product-price">40.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto Prebióticos y Probióticos -->
+    <div class="product-card" data-id="6" data-name="TERMO 2 ENVASES" data-price="0">
+      <div class="product-image">
+        <img src="TERMO2.png" alt="TERMO 2 ENVASES">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">JUEGO DE TERMO INOXIDABLE</h3>
+        <p class="product-effect">Juego de tazas de acero inoxidable aisladas</p>
+        <p class="product-description">Juego de tazas de acero inoxidable aisladas, termo de 500 ml/16.9 oz al vacío, incluye 3 tazas, portavasos de acero inoxidable para auto, ideal para café y bebidas frías, colores negro - verde- rosa - azul</p>
+
+   
+
+          <p><strong>CONTRAENTREGA BOGOTA</strong> 
+
+        <div class="product-price">65.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto Colina y Omega 3 -->
+    <div class="product-card" data-id="7" data-name="BATIDORA" data-price="0">
+      <div class="product-image">
+        <img src="LICUADORA.png" alt="BATIDORA">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">LICUADORA MINI PORTATIL</h3>
+        <p class="product-effect">Licuadora mini portátil 2 en 1 multifuncional</p>
+        <p class="product-description">Licuadora mini portátil 2 en 1 multifuncional con batería recargable, taza compacta de polipropileno grado alimenticio para exprimir frutas personal y familiar, fácil de llevar al aire libre, material plástico duradero con 6 cuchillas y cargador USB - ideal para hacer batidos, licuados, bebidas frías, </p>
+
+
+        
+          <p><strong>CONTRAENTREGA BOGOTA</strong> 
+
+        <div class="product-price">50.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto Fibra Natural -->
+    <div class="product-card" data-id="8" data-name="BATIDORA ELECTRICA" data-price="0">
+      <div class="product-image">
+        <img src="LICU.png" alt="BATIDORA ELECTRICA">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">LICUADORA RECARGABLE</h3>
+        <p class="product-effect">[Licuadora portátil recargable] </p>
+        <p class="product-description">[Licuadora portátil recargable] Licuadora y extractor portátil recargable por USB - Fácil de limpiar, ideal para batidos de frutas, verduras y leche - Capacidad de 10.14oz a 16.91oz</p>
+
+        
+
+          <p><strong>CONTRAENTREGA BOGOTA</strong>
+
+        <div class="product-price">65.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto Multikids -->
+    <div class="product-card" data-id="9" data-name="AUDIFONO LENOVO" data-price="0">
+      <div class="product-image">
+        <img src="LENOVO.png" alt="AUDIFONO LENOVO">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">Auriculares inalámbricos Lenovo</h3>
+        <p class="product-effect">Auriculares inalámbricos </p>
+        <p class="product-description">Auriculares inalámbricos Lenovo LE208 V6.0, conexión estable, ideal para llamadas de negocios, trabajo desde casa, audio profesional, diseño moderno, construcción duradera, cancelación de ruido, manos libres, favoritos 2025</p>
+
+        
+
+          <p><strong>CONTRAENTREGA BOGOTA</strong> 
+
+        <div class="product-price">40.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto Colágeno Vegano -->
+    <div class="product-card" data-id="10" data-name="AUDIFONO GAMER" data-price="0">
+      <div class="product-image">
+        <img src="AUDI.png" alt="AUDIFONO GAMER">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">AUDIFONO GAMER</h3>
+        <p class="product-effect">Auriculares inalámbricos</p>
+        <p class="product-description">Auriculares inalámbricos con estuche de carga - Sonido estéreo Hi-Fi, control táctil, carga tipo C, audífonos deportivos ligeros para entrenamientos, juegos y anime, compatibles con teléfonos, diseño ergonómico, para amantes de la música</p>
+
+        
+    
+          <p><strong>CONTRAENTREGA BOGOTA</strong> 
+        <div class="product-price">40.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto 7 Colágenos -->
+    <div class="product-card" data-id="11" data-name="7 Colágenos" data-price="0">
+      <div class="product-image">
+        <img src="KURO.png" alt="7 Colágenos">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">AUDIFONOS SANRIO FANS</h3>
+        <p class="product-effect">Auriculares inalámbricos Sanrio adorables</p>
+        <p class="product-description">Auriculares inalámbricos Sanrio adorables, con diseños de Kuromi, Cinnamoroll, Pochacco y Hello Kitty, pequeños y ligeros, ideales para deportes, entrenamientos, viajes, juegos y como regalo de cumpleaños para mujeres</p>
+
+    
+
+       
+          <p><strong>CONTRAENTREGA BOGOTA</strong> 
+
+        <div class="product-price">55.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto Ácido Fólico, Luteína y Omega 3 -->
+    <div class="product-card" data-id="12" data-name="AUDIFONO FANS SANRIO LIBRO" data-price="0">
+      <div class="product-image">
+        <img src="SANRIO.png" alt="AUDIFONO FANS SANRIO LIBRO">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">Audífonos Sanrio for BOOK</h3>
+        <p class="product-effect">Audífonos Sanrio</p>
+        <p class="product-description">Audífonos Sanrio for hello kitty, for Kuromi, for Cinnamoroll y for my melody, auriculares inalámbricos para mujeres - Diseño de anime lindo, control táctil, batería de litio recargable, carga USB, puerto Type-C, no impermeable, ideal para ejercicio y viajes, auriculares para ejercicio | Accesorio juguetón | Plástico duradero, auriculares</p>
+
+          <p><strong>CONTRAENTREGA BOGOTA</strong>
+        <div class="product-price">70.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto Calcio Coral Marino -->
+    <div class="product-card" data-id="13" data-name="AUDIFONO EDITION TRANSFORMER" data-price="0">
+      <div class="product-image">
+        <img src="TRASNFORMER.png" alt="AUDIFONO EDITION TRANSFORMER">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">AURICULARES INALAMBRICOS TRANSFORMERS TF-T51</h3>
+        <p class="product-effect">Auriculares inalámbricos</p>
+        <p class="product-description">Auriculares inalámbricos TRANSFORMERS TF-T51 - Audio Hi-Fi, carga rápida USB-C, diseño elegante en negro, ultraligeros para una experiencia musical envolvente, auriculares para gaming, viajes, diseño futurista, equipo de audio elegante, sonido premium, alta calidad de audio, sonido estéreo, para entusiastas de la tecnología , colores amarillo y negro</p>
+
+       
+
+        
+          <p><strong>CONTRAENTREGA BOGOTA</strong> 
+
+        <div class="product-price">65.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+    <!-- Producto Proteína Vegana -->
+    <div class="product-card" data-id="14" data-name="AUDIFONO GAMER CARA" data-price="0">
+      <div class="product-image">
+        <img src="GAMER.png" alt="AUDIFONO GAMER CARA">
+      </div>
+      <div class="product-content">
+        <h3 class="product-title">AURICULARES GAMER ONIKUMA T20</h3>
+        <p class="product-effect">Auriculares inalámbricos</p>
+        <p class="product-description">Auriculares inalámbricos de juego ONIKUMA T20, estéreo HiFi con control táctil, micrófono, control de volumen, diseño de espalda abierta, batería recargable, compatibles con teléfonos, no impermeables, adecuados para juegos, audio de películas, etc.</p>
+
+        
+
+    
+          <p><strong>CONTRAENTREGA BOGOTA</strong> 
+
+        <div class="product-price">75.000</div>
+        <button class="add-to-cart">Agregar al Carrito</button>
+      </div>
+    </div>
+
+
+
+     <!-- Producto 2 -->
+      <div class="product-card" data-id="2" data-name="AUDIFONO MY LITTLE PONY">
+        <div class="product-image">
+          <img src="PONY.png" alt="AUDIFONO MY LITTLE PONY">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">AUDIFONO MY LITTLE PONY</h3>
+          <p class="product-effect">AURICULARES</p>
+          <p class="product-description">
+            Auriculares  Inalámbricos 2025 Modelo Nuevo - Diseño de Personajes de Dibujos Animados Lindos, Vida de Batería Ultra-Longa, Controles Inteligentes de Tacto, Micrófono de Alta Sensibilidad para Llamadas Claras en Ambientes Ruidosos, Ligero y Duradero Plástico, Carga Tipo-C, Compatible con Teléfonos Celulares, Auriculares Inalámbricos para Juegos
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">65.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 3 -->
+      <div class="product-card" data-id="3" data-name="AURICULARES TACTIL">
+        <div class="product-image">
+          <img src="PANTA.png" alt="AURICULARES TACTIL">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">AURICULARES PANTALLA TACTIL</h3>
+          <p class="product-effect">Auriculares Inalámbricos </p>
+          <p class="product-description">
+            Auriculares Inalámbricos , Cancelación de Ruido ANC+ENC, Pantalla Táctil Multifuncional LCD, Resistentes al Sudor, Larga Duración de Batería, Calidad de Sonido Clara, Cómodos de Usar, Auriculares Inalámbricos Intrauditivos, Auriculares para Juegos,
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">70.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 4 -->
+      <div class="product-card" data-id="4" data-name="AURICULARES GAMER YELLOW">
+        <div class="product-image">
+          <img src="GAMERR.png" alt="AURICULARES GAMER YELLOW">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">AURICULARES GAMER YELLOW ONIKUMA</h3>
+          <p class="product-effect">Auriculares inalámbricos</p>
+          <p class="product-description">
+          Auriculares inalámbricos con diseño giratorio flip, auriculares para gaming con tecnología 5.4, reducción de ruido en llamadas, modo juego de baja latencia, estéreo HiFi, estilo cartoon Warcraft, carga tipo C, micrófono incorporado, para juegos móviles y llamadas | Únicos y hermosos | Auriculares decorativos
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">55.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 5 -->
+      <div class="product-card" data-id="5" data-name="AUDIFONOS GAMER PREMIUM">
+        <div class="product-image">
+          <img src="PREMIUN.png" alt="AUDIFONOS GAMER PREMIUM">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">AUDIFONOS GAMER PREMIUM</h3>
+          <p class="product-effect">GAMER PREMIUM</p>
+          <p class="product-description">
+            Audífonos Inalámbricos Ligeros para Hombres de CyberDyer con Cancelación Inteligente de Ruido y Compartimento de Carga de Gran Capacidad para Android, Auriculares para Mujeres con Tacto de Huella Digital para iPhone, El Mejor Regalo
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">100.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 6 -->
+      <div class="product-card" data-id="6" data-name="AURICULARES DE 4">
+        <div class="product-image">
+          <img src="4.png" alt="AURICULARES DE 4">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">AURICULARES DE 4</h3>
+          <p class="product-effect"> Nuevos Auriculares In-Ear True Wireless para Gaming</p>
+          <p class="product-description">
+           Nuevos Auriculares In-Ear True Wireless para Gaming, Mini Auriculares para Parejas, Tapones para los Oídos de Música TWS HIFI Bass Stereo ENC HD Calling, Auriculares para Android para for iphone, Teléfono Celular, Auriculares Deportivos Inteligentes, Regalo de Halloween, Auriculares para Entrenamiento, Auriculares Modernos. Colores blanco - crema - negro
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">65.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 7 -->
+      <div class="product-card" data-id="7" data-name="AUDIFONOS">
+        <div class="product-image">
+          <img src="SEN.png" alt="AUDIFONOS">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">AUDIFONOS</h3>
+          <p class="product-effect">AUDIFONOS</p>
+          <p class="product-description">
+           2025 Estilo Nuevo Auriculares Inalámbricos Verdaderos con Cámara de Dibujos Animados y Clip Musical para Parejas, Mini Earbuds Deportivos TWS 9D Hifi Stereo HD Llamadas Dolby Stereo Corticales para Android e iPhone, Audífonos Inteligentes para Teléfono Móvil, color blanco - café - verde ,
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">40.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+
+      <!-- Producto 5 -->
+      <div class="product-card" data-id="5" data-name="SMARTWATCH">
+        <div class="product-image">
+          <img src="RELOJ.png" alt="SMARTWATCH">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">RELOJ INTELIGENTE</h3>
+          <p class="product-effect">RELOJ INTELIGENTE</p>
+          <p class="product-description">
+           Reloj inteligente deportivo multifuncional, pantalla táctil completa de 1,83 pulgadas, llamadas y mensajes inalámbricos, seguimiento de fitness con varios modos deportivos, compatible con for iphone y teléfonos Android, reloj inteligente adecuado para mujeres y hombres,
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">55.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 6 -->
+      <div class="product-card" data-id="6" data-name="Reloj Inteligente GWENLAND ">
+        <div class="product-image">
+          <img src="ELOJJ.png" alt="Reloj Inteligente GWENLAND ">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">Reloj Inteligente GWENLAND con Pantalla Táctil</h3>
+          <p class="product-effect">Reloj Inteligente GWENLAND  COLOR ROSADO,NEGRO,VERDE.</p>
+          <p class="product-description">
+           Reloj Inteligente GWENLAND con Pantalla Táctil Completa de 1.38", Más de 100 Modos de Ejercicio, Control de Clima y Música, Asistente de Voz, Monitoreo Corporal Todo el Día, sin varillas, Batería Recargable de Litio, IP68, Regalo para Hombres y Mujeres color rosado - negro - verde
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">70.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 7 -->
+      <div class="product-card" data-id="7" data-name="Reloj Inteligente KE3 con Linterna">
+        <div class="product-image">
+          <img src="RELOJP.png" alt="Reloj Inteligente KE3 con Linterna">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">Reloj Inteligente KE3 con Linterna</h3>
+          <p class="product-effect">Reloj Inteligente KE3 </p>
+          <p class="product-description">
+           Popular Reloj Inteligente KE3 con Linterna para Hombres, Pantalla TFT de 1.45 Pulgadas, Cronómetro de Tiempo y Kilometraje Deportivo, Quema de Calorías, Datos de Sueño y Tomar Fotos, Reloj de Pulsera Multifuncional, Reloj Inteligente de Fitness para iPhone Android, 
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">100.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+
+       <!-- Producto 7 -->
+      <div class="product-card" data-id="7" data-name="ZEALOT S49 PRO">
+        <div class="product-image">
+          <img src="BAFLE.png" alt="ZEALOT S49 PRO">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">BAFLE ZEALOT S49 PRO</h3>
+          <p class="product-effect">PARLANTE ZEALOT</p>
+          <p class="product-description">
+          Altavoces Inalámbricos ZEALOT S49pro, Subwoofer Portátil para Exteriores, Calidad de Sonido Hifi IPX 5, Luz RGB, Emparejamiento Dual, Batería de 3000mAh, 12 Horas de Reproducción, Graves Potentes. Cable de Carga, Compatible con Teléfono/Tablet/TV. Para Hogar, Coche y Camping , colores negro - gris - azul
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">130.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+
+      <!-- Producto 5 -->
+      <div class="product-card" data-id="5" data-name="ZEALOTS56">
+        <div class="product-image">
+          <img src="ZEALOTS56.png" alt="ZEALOTS56">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">PARLANTE ZEALOT S56</h3>
+          <p class="product-effect">PARLANTE ZEALOT S56</p>
+          <p class="product-description">
+          Altavoces inalámbricos ZEALOT S56, altavoz portátil para exteriores, impermeable IPX 5, altavoz inalámbrico, doble sincronización, larga vida de la batería, 24 horas de reproducción estéreo potente, bajo, cable de carga, conecta con teléfono móvil/tableta/TV, 
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">250.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 6 -->
+      <div class="product-card" data-id="6" data-name="ZEALOT S97 ">
+        <div class="product-image">
+          <img src="ZEALOTS97.png" alt="ZEALOT S97 ">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">PARLANTE ZEALOT S97</h3>
+          <p class="product-effect">PARLANTE ZEALOT S97</p>
+          <p class="product-description">
+           Zealot S97 de 80 watts , altavoz portátil de sonido de bajo potente para exteriores, con asa, resistente al agua IPX 5, calidad de sonido HiFi, luz RGB, TWS dual, larga vida de batería, 36 horas de reproducción estéreo, bajo resonante, cable de carga y cable auxiliar, conecta con teléfono móvil/tableta/TV,
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">450.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 7 -->
+      <div class="product-card" data-id="7" data-name="Reloj Inteligente KE3 con Linterna">
+        <div class="product-image">
+          <img src="PARLA.png" alt="Reloj Inteligente KE3 con Linterna">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">PARLANTE ZEALOT</h3>
+          <p class="product-effect">ZEALOT </p>
+          <p class="product-description">
+           Bocina inalámbrica ZEALOT de 5W con batería de 1800mAh, 10 horas de reproducción, sonido envolvente 360°, carga USB, diseño compacto y portátil, fácil de transportar, calidad de sonido HiFi, sonido envolvente 7.2, carga tipo C, para uso en casa y al aire libre
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">65.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+
+       <!-- Producto 7 -->
+      <div class="product-card" data-id="7" data-name="ZEALOT S51 ">
+        <div class="product-image">
+          <img src="ZEALOTS51.png" alt="ZEALOT S51">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">BAFLE ZEALOT S51</h3>
+          <p class="product-effect">PARLANTE ZEALOT</p>
+          <p class="product-description">
+          Bocinas inalámbricas ZEALOT S51, parlante inalámbrico, conexión dual, batería de 1800mAh, 10 horas de reproducción, sonido estéreo potente con graves profundos, incluye cable de carga y auxiliar, compatible con teléfono móvil/tablet/TV
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">95.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+
+      <!-- Producto 5 -->
+      <div class="product-card" data-id="5" data-name="MASAJEADOR">
+        <div class="product-image">
+          <img src="MASAJEADOR.png" alt="MASAJEADOR">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">PISTOLA DE MASAJES</h3>
+          <p class="product-effect">PISTOLA DE MASAJES</p>
+          <p class="product-description">
+          Pistola de masaje portátil recargable con 4 cabezales intercambiables, relajación de tejidos profundos, carga USB, batería de litio 1800mAh, accesorios electrónicos para deportes y exteriores
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">45.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 6 -->
+      <div class="product-card" data-id="6" data-name="CAMARA VIGILANCIA ">
+        <div class="product-image">
+          <img src="CAMAR.png" alt="CAMARA VIGILANCIA ">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title">CAMARA DE SEGURIDAD</h3>
+          <p class="product-effect">VIVISION NOCTURNA , ROTACION 360.</p>
+          <p class="product-description">
+           Cámara de seguridad AFGVK con visión nocturna de color, cámara inalámbrica interior/exterior, audio bidireccional, pan/tilt/zoom de múltiples ángulos, cámara de seguridad inteligente de hogar con Wi-Fi y seguimiento de movimiento de mascotas, ideal para seguridad en el hogar | cámaras de seguridad inalámbricas | cámaras de seguridad inalámbricas | cámaras de seguridad | cámaras de seguridad para hogar
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">70.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+      <!-- Producto 7 -->
+      <div class="product-card" data-id="7" data-name=" Reloj despertador inalámbrico">
+        <div class="product-image">
+          <img src="LAMPA.png" alt=" Reloj despertador inalámbrico">
+        </div>
+        <div class="product-content">
+          <h3 class="product-title"> Reloj despertador inalámbrico</h3>
+          <p class="product-effect"> Reloj despertador inalámbrico </p>
+          <p class="product-description">
+          Reloj despertador inalámbrico Kouzone con luz ambiental RGB, altavoz inalámbrico, carga rápida, batería recargable de polímero de litio, doble modo de alimentación (USB/batería), control por botones, salida de audio - Ideal para despertar en el dormitorio, despertador para personas que duermen profundamente
+          </p>
+          <div class="product-info">
+            <p><strong>CONTRAENTREGA BOGOTA</strong></p>
+          </div>
+          <div class="product-price">50.000</div>
+          <button class="add-to-cart">Agregar al Carrito</button>
+        </div>
+      </div>
+
+
+  </div>
+</section>
+
+<script>
+document.addEventListener("DOMContentLoaded", () => {
+  const overlay = document.getElementById("overlay");
+  const cartSidebar = document.getElementById("cart-sidebar");
+  const closeCartBtn = document.getElementById("close-cart");
+  const cartItemsContainer = document.getElementById("cart-items");
+  const cartTotalEl = document.getElementById("cart-total");
+  const checkoutBtn = document.getElementById("checkout-btn");
+
+  let total = 0;
+  let cart = []; // Lista de productos en el carrito
+
+  function formatCurrency(num) {
+    return "$" + Number(num).toLocaleString("es-CO");
+  }
+
+  function parsePrice(text) {
+    return parseInt(String(text).replace(/[^\d]/g, "")) || 0;
+  }
+
+  function actualizarTotal() {
+    total = cart.reduce((sum, item) => sum + item.precio * item.cantidad, 0);
+    cartTotalEl.innerText = `Total: ${formatCurrency(total)}`;
+  }
+
+  function renderCart() {
+    cartItemsContainer.innerHTML = "";
+    cart.forEach(item => {
+      const el = document.createElement("div");
+      el.classList.add("cart-item");
+      el.innerHTML = `
+        <div style="display:flex;align-items:center;gap:10px;margin-bottom:10px;">
+          <img src="${item.imagen}" style="width:50px;height:50px;object-fit:cover;border-radius:8px;">
+          <div style="flex:1;">
+            <p class="cart-item-name" style="font-weight:bold;margin:0;">${item.nombre}</p>
+            <p style="margin:0;">${formatCurrency(item.precio)} x ${item.cantidad}</p>
+          </div>
+          <div>
+            <button class="cart-decrease" data-name="${item.nombre}" style="margin-right:5px;">−</button>
+            <button class="cart-increase" data-name="${item.nombre}">+</button>
+          </div>
+        </div>
+      `;
+      cartItemsContainer.appendChild(el);
+    });
+    actualizarTotal();
+  }
+
+  function addToCart(nombre, precio, imagen) {
+    const existente = cart.find(p => p.nombre === nombre);
+    if (existente) {
+      existente.cantidad++;
+    } else {
+      cart.push({ nombre, precio, imagen, cantidad: 1 });
+    }
+    renderCart();
+    // ❌ antes aquí estaba: openCart();
+    // la quitamos para que NO se abra automáticamente
+  }
+
+  function openCart() {
+    cartSidebar.classList.add("open");
+    if (overlay) overlay.style.display = "block";
+  }
+
+  function closeCart() {
+    cartSidebar.classList.remove("open");
+    if (overlay) overlay.style.display = "none";
+  }
+
+  if (closeCartBtn) closeCartBtn.addEventListener("click", closeCart);
+  if (overlay) overlay.addEventListener("click", closeCart);
+
+  document.addEventListener("click", (e) => {
+    const btn = e.target.closest(".add-to-cart");
+    if (btn) {
+      const productCard = btn.closest(".product-card");
+      const nombre = productCard.querySelector(".product-title").innerText.trim();
+      const precio = parsePrice(productCard.querySelector(".product-price").innerText);
+      const imagen = productCard.querySelector("img").src;
+      addToCart(nombre, precio, imagen);
+    }
+
+    if (e.target.classList.contains("cart-increase")) {
+      const item = cart.find(p => p.nombre === e.target.dataset.name);
+      if (item) item.cantidad++;
+      renderCart();
+    }
+
+    if (e.target.classList.contains("cart-decrease")) {
+      const item = cart.find(p => p.nombre === e.target.dataset.name);
+      if (item) {
+        item.cantidad--;
+        if (item.cantidad <= 0) {
+          cart = cart.filter(p => p.nombre !== item.nombre);
+        }
+      }
+      renderCart();
+    }
+  });
+
+  checkoutBtn.addEventListener("click", () => {
+    if (cart.length === 0) {
+      alert("Tu carrito está vacío 😅");
+      return;
+    }
+
+    const confirmar = confirm("Gracias por tu compra 🙌 Serás redirigido a WhatsApp para completar el pedido.");
+    if (!confirmar) return;
+
+    let mensaje = "🛒 *Nuevo pedido desde ChatInfluencer*:\n\n";
+    cart.forEach((p, i) => {
+      mensaje += `${i + 1}. ${p.nombre}\n   Cantidad: ${p.cantidad}\n   Precio unitario: ${formatCurrency(p.precio)}\n\n`;
+    });
+    mensaje += `💰 *Total: ${formatCurrency(total)}*\n📍 Contraentrega Bogotá`;
+
+    const numero = "573217073701";
+    const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
+    window.open(url, "_blank");
+  });
+});
+</script>
+
+
+
+    
+
+
+
+
+ 
+
+  <!-- ================== SECCIÓN CONTACTO ================== -->
+  <section id="contacto">
+    <div class="section-header">
+      <h1>CONTACTO</h1>
+      <p>Estamos aquí para ayudarte. Ponte en contacto con nosotros</p>
+    </div>
+
+    <div class="contact-info">
+      <p><i class="fas fa-user"></i> <strong>SANTIAGO</strong></p>
+      <p><i class="fas fa-phone"></i> +57 321 7073701</p>
+      <p><i class="fas fa-map-marker-alt"></i> Bogotá, Colombia</p>
+
+      <div class="social-links">
+        <a href="#"><i class="fab fa-facebook-f"></i></a>
+        <a href="#"><i class="fab fa-instagram"></i></a>
+        <a href="#"><i class="fab fa-twitter"></i></a>
+        <a href="#"><i class="fab fa-whatsapp"></i></a>
+      </div>
+    </div>
+  </section>
+
+
+  <!-- ======= CHATBOT ======= -->
+  <!-- BOTÓN PARA ABRIR CHATBOT -->
+  <button id="chatbot-toggle-btn" class="chatbot-toggle">💬</button>
+
+  <!-- CONTENEDOR DEL CHATBOT -->
+  <div id="chatbot-window" class="chatbot-container">
+    <div class="chatbot-header">
+      <h3>Asistente NaturSuplementos</h3>
+      <button id="chatbot-close" class="close-btn">×</button>
+    </div>
+    <div id="chatbot-messages-container" class="chatbot-messages">
+      <!-- Los mensajes se agregarán aquí dinámicamente -->
+    </div>
+    <div class="chatbot-input-container">
+      <input type="text" id="chatbot-user-input" class="chatbot-input" placeholder="Escribe tu mensaje...">
+      <button id="chatbot-send-btn" class="chatbot-send">➤</button>
+    </div>
+  </div>
+  <!-- Botón de WhatsApp -->
+  <a href="https://wa.me/573217073701" class="whatsapp-float" target="_blank">
+    <i class="fab fa-whatsapp"></i>
+  </a>
+
+
+
+  
+  
+  
+
+  <footer>
+    <p>&copy; CHARINFLONE STORE</p>
+  </footer>
+
+  <!-- ================== SCRIPT ================== -->
+  <script src="script.js"></script>
+  <script src="chatbot.js"></script>
+
+</html>
+
+
+
+
