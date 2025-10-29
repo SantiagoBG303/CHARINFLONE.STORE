@@ -949,64 +949,16 @@ footer p {
 #checkout-btn:hover {
   background: #ffb700;
 }
+ 
 
-
-
-
-/* --- FIX para que el encabezado "FLONVERSE TOYS" no quede oculto en celular --- */
-header, .navbar, .search-bar {
-  z-index: 1000; /* se mantiene visible pero detrás del carrito */
+/* --- Ajuste visual: que FLONVERSE TOYS se vea sin tapar el header --- */
+main, section, .contenido-principal {
+  margin-top: 100px !important; /* ajusta el espacio según tu header */
 }
 
-#cart-sidebar {
-  z-index: 9999; /* carrito encima de todo */
-}
-
-.main-content, section, .hero, .titulo-principal {
-  margin-top: 90px !important; /* empuja hacia abajo el texto */
-}
-
-/* Asegura que no quede cubierto por la barra de búsqueda */
+/* En pantallas pequeñas (celulares) */
 @media (max-width: 768px) {
-  .main-content, section, .hero, .titulo-principal {
-    margin-top: 120px !important;
-  }
-}
-
-
-
-/* --- FIX FINAL: muestra bien el texto FLONVERSE TOYS en celular --- */
-.hero, .titulo-principal, .hero-title {
-  margin-top: 130px !important;
-  position: relative;
-  z-index: 1;
-}
-
-/* Ajuste adicional si el buscador o navbar es fijo */
-header, .navbar, .search-bar {
-  position: fixed;
-  top: 0;
-  width: 100%;
-  z-index: 1000;
-  background: white;
-}
-
-/* Si aún se tapa un poco en pantallas pequeñas, más espacio */
-@media (max-width: 768px) {
-  .hero, .titulo-principal, .hero-title {
-    margin-top: 160px !important;
-  }
-}
-
-
-/* --- ARREGLO DEFINITIVO: que FLONVERSE TOYS se vea completo --- */
-body {
-  padding-top: 120px !important; /* deja espacio para el header fijo */
-}
-
-/* Si sigue tapado en celulares, damos un poco más */
-@media (max-width: 768px) {
-  body {
-    padding-top: 150px !important;
+  main, section, .contenido-principal {
+    margin-top: 130px !important;
   }
 }
