@@ -972,3 +972,28 @@ header, .navbar, .search-bar {
     margin-top: 120px !important;
   }
 }
+
+
+
+/* --- FIX FINAL: muestra bien el texto FLONVERSE TOYS en celular --- */
+.hero, .titulo-principal, .hero-title {
+  margin-top: 130px !important;
+  position: relative;
+  z-index: 1;
+}
+
+/* Ajuste adicional si el buscador o navbar es fijo */
+header, .navbar, .search-bar {
+  position: fixed;
+  top: 0;
+  width: 100%;
+  z-index: 1000;
+  background: white;
+}
+
+/* Si aún se tapa un poco en pantallas pequeñas, más espacio */
+@media (max-width: 768px) {
+  .hero, .titulo-principal, .hero-title {
+    margin-top: 160px !important;
+  }
+}
