@@ -997,3 +997,16 @@ header, .navbar, .search-bar {
     margin-top: 160px !important;
   }
 }
+
+
+/* --- ARREGLO DEFINITIVO: que FLONVERSE TOYS se vea completo --- */
+body {
+  padding-top: 120px !important; /* deja espacio para el header fijo */
+}
+
+/* Si sigue tapado en celulares, damos un poco más */
+@media (max-width: 768px) {
+  body {
+    padding-top: 150px !important;
+  }
+}
