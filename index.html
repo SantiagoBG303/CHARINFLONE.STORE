@@ -1425,20 +1425,21 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 
+    // ---- Finalizar compra ----
   checkoutBtn.addEventListener("click", () => {
     if (cart.length === 0) {
       alert("Tu carrito está vacío 😅");
       return;
     }
 
-    const confirmar = confirm("Gracias por tu compra 🙌 Serás redirigido a WhatsApp para completar el pedido.");
+    const confirmar = confirm("Gracias por tu compra 🙌 Serás redirigido a WhatsApp para completar el pedido o pagar por Nequi o acordamos el pago por Whatshapp.");
     if (!confirmar) return;
 
-    let mensaje = "🛒 *Nuevo pedido desde ChatInfluencer*:\n\n";
+    let mensaje = "🛍️ *Nuevo pedido desde tu tienda*:\n\n";
     cart.forEach((p, i) => {
-      mensaje += `${i + 1}. ${p.nombre}\n   Cantidad: ${p.cantidad}\n   Precio unitario: ${formatCurrency(p.precio)}\n\n`;
+      mensaje += `${i + 1}. ${p.nombre}\n   Cantidad: ${p.cantidad}\n   Precio: ${formatCurrency(p.precio)}\n\n`;
     });
-    mensaje += `💰 *Total: ${formatCurrency(total)}*\n📍 Contraentrega Bogotá`;
+    mensaje += `💰 *Total a pagar:* ${formatCurrency(total)}\n📲 Paga por Nequi al número *3217073701*.\n\nEnvía el comprobante muchas gracias.`;
 
     const numero = "573217073701";
     const url = `https://wa.me/${numero}?text=${encodeURIComponent(mensaje)}`;
