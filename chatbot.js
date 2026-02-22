@@ -31,6 +31,8 @@ document.addEventListener("DOMContentLoaded", () => {
     div.style.borderRadius = "8px";
     div.style.maxWidth = "85%";
     div.style.wordBreak = "break-word";
+    div.style.color = "#000"; // 👈 SOLO ESTA LÍNEA SE AGREGÓ
+
     if (sender === "user") {
       div.style.background = "#e8f5e9";
       div.style.alignSelf = "flex-end";
@@ -38,6 +40,7 @@ document.addEventListener("DOMContentLoaded", () => {
       div.style.background = "#f1f1f1";
       div.style.alignSelf = "flex-start";
     }
+
     div.innerHTML = html ? text : `<p>${text}</p>`;
     chatBody.appendChild(div);
     chatBody.scrollTop = chatBody.scrollHeight;
@@ -51,7 +54,7 @@ document.addEventListener("DOMContentLoaded", () => {
       descripcion: p.querySelector(".product-description")?.innerText?.trim() || "",
       precio: p.querySelector(".product-price")?.innerText?.trim() || "",
       imagen: p.querySelector("img")?.src || "",
-      elemento: p, // guardamos el elemento real del DOM
+      elemento: p,
     });
   });
 
@@ -115,14 +118,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
       appendMessage("bot", html, true);
 
-      // === Agregar eventos a los productos del chat ===
       setTimeout(() => {
         chatBody.querySelectorAll(".chat-product").forEach((div) => {
           div.addEventListener("click", () => {
             const index = parseInt(div.getAttribute("data-product-index"));
             const producto = encontrados[index];
             if (producto && producto.elemento) {
-              chatContainer.style.display = "none"; // cerrar el chat
+              chatContainer.style.display = "none";
               producto.elemento.scrollIntoView({ behavior: "smooth", block: "center" });
               producto.elemento.style.transition = "outline 0.3s ease";
               producto.elemento.style.outline = "3px solid #28a745";
